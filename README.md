@@ -7,5 +7,5 @@ This project will use Java to recognize license plates parallelly.
 ## Contributors
 
 - Kuan-Te (Johnny) Lee
-- Yi-Hing (Kenny) Lin
+- Yi-Ning (Kenny) Lin
 - Yi-Hsuan (Ashley) Chen
