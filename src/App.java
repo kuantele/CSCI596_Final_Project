@@ -13,9 +13,9 @@ public class App {
 		files[3] = new File("Training Data/numbers image.png");
 		alpr.train(files);
 
-		//File file = new File("License Plate Photos/ca_aug2012.png");
+		File file = new File("License Plate Photos/ca_aug2012.png");
 		//File file = new File("License Plate Photos/ca_12.jpeg");
-		File file = new File("License Plate Photos/ca_10.jpeg");
+		//File file = new File("License Plate Photos/ca_10.jpeg");
 		//File file = new File("License Plate Photos/ca2004.jpg");
 		//File file = new File("License Plate Photos/ca2005.jpg");
 		//File file = new File("License Plate Photos/ca2006.jpg");

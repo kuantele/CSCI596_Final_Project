@@ -33,7 +33,7 @@ public class ALPR {
     public ALPR(){
 
     }
-    
+
 	public void readPlate(File file) {
 		System.out.println("Loading file.");
 		BufferedImage img = null;
@@ -43,9 +43,9 @@ public class ALPR {
 		catch (IOException e) { e.printStackTrace(System.out); }
 
 		if (img != null) {
-			display(img);
+			//display(img);
 			img = toGrayScale(img);
-			display(img);
+			//display(img);
 			img = getScaledImage(img, height1);
 
 			// Crop out top and bottom margins
@@ -55,7 +55,7 @@ public class ALPR {
 			// Scale image to CHARSIZE height
 			img = getScaledImage(img, CHARSIZE[1]);
 			System.out.println("  Scaled image: " + img.getHeight() + "x" + img.getWidth());
-			display(img);
+			//display(img);
 
 			// boost contrast
 			img = boostContrast(img);
