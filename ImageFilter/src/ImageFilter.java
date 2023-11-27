@@ -35,7 +35,7 @@ public class ImageFilter {
             //Display the gray scale image
             //img = toGrayScale2(img);
             img = toGrayScale(img);
-            display(img);
+            //display(img);
 
             //Display the pixelated image
             //img = pixelate(img);
@@ -47,7 +47,13 @@ public class ImageFilter {
             //display(img);
 
             //Gaussian Blur (Weighted blurring)
-            img = blur(img);
+            //img = blur(img);
+            //img = blur(blur(img));
+            img = heavyblur(img);
+            //display(img);
+
+            //Edge Detection
+            img = detectEdges(img);
             display(img);
         }
     }
@@ -178,10 +184,10 @@ public class ImageFilter {
     }
 
     /*
-     * Apply Guassian blur to a grayscale image
+     * Apply 3*3 Gaussian blur to a grayscale image
      */
     public BufferedImage blur(BufferedImage img){
-        System.out.println(" Gussian blur");
+        System.out.println(" 3*3 Gaussian blur");
 
         //Create new buffered image for blurred image storing
         BufferedImage blurImg = new BufferedImage(img.getWidth()-2, img.getHeight()-2, BufferedImage.TYPE_BYTE_GRAY);
@@ -208,6 +214,97 @@ public class ImageFilter {
         }
         return blurImg;
     }
+
+    /*
+     * Apply 5*5 Gaussian blur to a grayscale image
+     */
+    public static BufferedImage heavyblur (BufferedImage img){
+        System.out.println(" 3*3 Gaussian blur");
+
+        //Create new buffered image for blurred image storing
+		BufferedImage blurImg = new BufferedImage(img.getWidth()-4, img.getHeight()-4, BufferedImage.TYPE_BYTE_GRAY);
+        
+        //Initiate pixel RGB value
+		int pix = 0;
+
+        //This part can be done parallely
+		for (int y=0; y<blurImg.getHeight(); y++) {
+			for (int x=0; x<blurImg.getWidth(); x++) {
+				pix = (int)(
+				10*(img.getRGB(x+3, y+3)& 0xFF)
+				+ 6*(img.getRGB(x+2, y+1)& 0xFF)
+				+ 6*(img.getRGB(x+1, y+2)& 0xFF)
+				+ 6*(img.getRGB(x+2, y+3)& 0xFF)
+				+ 6*(img.getRGB(x+3, y+2)& 0xFF)
+				+ 4*(img.getRGB(x+1, y+1)& 0xFF)
+				+ 4*(img.getRGB(x+1, y+3)& 0xFF)
+				+ 4*(img.getRGB(x+3, y+1)& 0xFF)
+				+ 4*(img.getRGB(x+3, y+3)& 0xFF)
+				+ 2*(img.getRGB(x, y+1)& 0xFF)
+				+ 2*(img.getRGB(x, y+2)& 0xFF)
+				+ 2*(img.getRGB(x, y+3)& 0xFF)
+				+ 2*(img.getRGB(x+4, y+1)& 0xFF)
+				+ 2*(img.getRGB(x+4, y+2)& 0xFF)
+				+ 2*(img.getRGB(x+4, y+3)& 0xFF)
+				+ 2*(img.getRGB(x+1, y)& 0xFF)
+				+ 2*(img.getRGB(x+2, y)& 0xFF)
+				+ 2*(img.getRGB(x+3, y)& 0xFF)
+				+ 2*(img.getRGB(x+1, y+4)& 0xFF)
+				+ 2*(img.getRGB(x+2, y+4)& 0xFF)
+				+ 2*(img.getRGB(x+3, y+4)& 0xFF)
+				+ (img.getRGB(x, y)& 0xFF)
+				+ (img.getRGB(x, y+2)& 0xFF)
+				+ (img.getRGB(x+2, y)& 0xFF)
+				+ (img.getRGB(x+2, y+2)& 0xFF))/74;
+				int p = (255<<24) | (pix<<16) | (pix<<8) | pix; 
+				blurImg.setRGB(x,y,p);
+			}
+        }
+		return blurImg;
+	}
+
+    /*
+     * - Detect edges of a grayscale image (Sobel algorithm)
+     * - Apply "Blur" before edge detection
+     */
+    public static BufferedImage detectEdges (BufferedImage img) {
+        System.out.println(" Edge detection");
+        
+        //Initialize parameters
+		int h = img.getHeight(), w = img.getWidth(), threshold = 30, p = 0;
+        int[][] vert = new int[w][h];
+		int[][] horiz = new int[w][h];
+		int[][] edgeWeight = new int[w][h];
+
+        //Create new buffered image for edge image storing
+		BufferedImage edgeImg = new BufferedImage(w, h, BufferedImage.TYPE_BYTE_GRAY);
+		
+		for (int y=1; y<h-1; y++) {
+			for (int x=1; x<w-1; x++) {
+				vert[x][y] = (int)(img.getRGB(x+1, y-1)& 0xFF
+                    + 2*(img.getRGB(x+1, y)& 0xFF)
+                    + img.getRGB(x+1, y+1)& 0xFF
+					- img.getRGB(x-1, y-1)& 0xFF
+                    - 2*(img.getRGB(x-1, y)& 0xFF)
+                    - img.getRGB(x-1, y+1)& 0xFF);
+				horiz[x][y] = (int)(img.getRGB(x-1, y+1)& 0xFF
+                    + 2*(img.getRGB(x, y+1)& 0xFF)
+                    + img.getRGB(x+1, y+1)& 0xFF
+					- img.getRGB(x-1, y-1)& 0xFF
+                    - 2*(img.getRGB(x, y-1)& 0xFF)
+                    - img.getRGB(x+1, y-1)& 0xFF);
+				edgeWeight[x][y] = (int)(Math.sqrt(vert[x][y] * vert[x][y] + horiz[x][y] * horiz[x][y]));
+				if(edgeWeight[x][y] > threshold){
+                    p = (255<<24) | (255<<16) | (255<<8) | 255;
+                }
+				else{
+                    p = (255<<24) | (0<<16) | (0<<8) | 0;
+                }
+				edgeImg.setRGB(x,y,p);
+			}
+		}
+		return edgeImg;
+	}
 
     private void display(BufferedImage img) {
         System.out.println(" Displaying image");
