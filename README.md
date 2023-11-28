@@ -1,4 +1,4 @@
-# USC CSCI 596 Final Project
+# USC CSCI 596 Final Project (Fall 2023)
 
 ## Description
 
