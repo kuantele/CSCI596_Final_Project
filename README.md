@@ -20,6 +20,7 @@ Give many license plates in California, and use multi threads to recognize them 
 Report the performance profile to see how multi threads in this case can help speed up.
 
 ### Step 1: Training Data
+![](./demo1.png)
 Prepare 4 images containing A-Z and 0-9 in Penitentiary Gothic font.
 
 Convert them to grayscale and resize them to 20 x 43 pixels.
@@ -29,6 +30,7 @@ Let the character or digit as the key, and 1D integer array to store the graysca
 Append hard-coded character data to training Data to improve accuracy.
 
 ### Step 2: Test Data
+![](./demo2.png)
 Load each of the license plat images.
 
 Crop out top and bottom margins.
