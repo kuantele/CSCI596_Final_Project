@@ -5,8 +5,11 @@
 This project uses Java to recognize license plates parallelly. 
 
 The code was based on and derived from
-1. Youtube channel: Oggi AI - Java image filter(https://www.youtube.com/playlist?list=PLj8W7XIvO93p1v-f_eSP3yDu4PVK9Pbrt)
-2. GitHib Page: Joe James(https://github.com/joeyajames/Java/tree/master/ALPR and https://github.com/joeyajames/Java/tree/master/Image%20Filters)
+1. Youtube channel: Oggi AI - Java image filter
+   - https://www.youtube.com/playlist?list=PLj8W7XIvO93p1v-f_eSP3yDu4PVK9Pbrt
+2. GitHib Page: Joe James
+   - https://github.com/joeyajames/Java/tree/master/ALPR
+   - https://github.com/joeyajames/Java/tree/master/Image%20Filters
 
 ## Contributors
 
