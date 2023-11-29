@@ -18,11 +18,13 @@ The code was based on and derived from
 - Yi-Hsuan (Ashley) Chen
 
 ## Objective
-Train the capital English character and digits in Penitentiary Gothic font.
+- Train our model by offering the capital English character and digits in **Penitentiary Gothic** font.
 
-Give many license plates in California, and use multi threads to recognize them correctly. 
+- Offer great amount of license plates in California into our model to recognize them and turn into text correctly.
 
-Report the performance profile to see how multi threads in this case can help speed up.
+- Use multi threads to accerlerate the process.
+
+- Report the performance profile to see how multi threads in this case can help speed up.
 
 ### Image Processing Flow Chart
 ![](./Flowchart.png)
