@@ -28,7 +28,7 @@ This project uses Java to recognize license plates parallelly.
 5. Append hard-coded character data to training Data to improve accuracy.
 
 ### Step 2: Test Data
-<img src="./demo2.png" width=80% height=80%>
+<img src="./demo2.png" width=60% height=60%>
 
 1. Load license plate images to trained model.
 
