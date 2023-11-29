@@ -1,26 +1,30 @@
 # USC CSCI 596 Final Project (Fall 2023)
-This project uses Java to recognize license plates parallelly. 
+This project is implemented in Java to create a model that recognizes license plates parallelly. 
 
 ## Objective
 - Train our model by offering the capital English character and digits in **Penitentiary Gothic** font.
 
-- Offer great amount of license plates in California into our model to recognize them and turn into text correctly.
+- Offer the images of license plates in California into our model to recognize license plates' number and turn then into text correctly.
 
-- Use multi threads to accerlerate the process.
+- Use multi-threads to accerlerate the process.
 
-- Report the performance profile to see how multi threads in this case can help speed up.
+- Report the performance profile to identify the bottle neck of the code and evaluate how multi-threads in this case can help us to speed up.
 
 ## Description
 ### Image Processing Flow Chart
-![](./Flowchart.png)
+<p align="center">
+   <img src="./Flowchart.png">
+</p>
 
 ### Step 1: Training Data
-<img src="./demo1.png" width=80% height=80%>
+<p align="center">
+   <img src="./demo1.png" width=50% height=50%>
+</p>
 
 1. Feed our model with 4 images containing A-Z and 0-9 in **Penitentiary Gothic** font.
 
 2. Convert them to grayscale.
-   .
+
 3. Resize them to 20 x 43 pixels.
 
 4. Make the character and digit as the key, and 1D integer array that stores the grayscale pixel value as a value.
@@ -28,7 +32,9 @@ This project uses Java to recognize license plates parallelly.
 5. Append hard-coded character data to training Data to improve accuracy.
 
 ### Step 2: Test Data
-<img src="./demo2.png" width=60% height=60%>
+<p align="center">
+   <img src="./demo2.png" width=50% height=50%>
+</p>
 
 1. Load license plate images to trained model.
 
@@ -42,12 +48,12 @@ This project uses Java to recognize license plates parallelly.
 
 6. Compare the output and the label into a file.
 
-### Step 3: Multi threads speed up
+### Step 3: Multi-threads speed up
 1. Incorporate multi threads method to train our models with data.
 
-2. Recognizing great amount of license plate images simultaneously.
+2. Recognize abundant of license plate images simultaneously.
 
-3. Report the performance profile to see how multi threads in this case can help speed up. 
+3. Report the performance profile to identify the bottle neck of the code and evaluate how multi-threads in this case can help us to speed up.
 
 ## Resources
 
