@@ -28,6 +28,8 @@ This project is implemented in Java to create a model that recognizes license pl
 3. Resize them to 20 x 43 pixels.
 
 4. Make the character and digit as the key, and 1D integer array that stores the grayscale pixel value as a value.
+   
+   [255, 255, 64, 27, 128, ...., 0] length: 860
 
 5. Append hard-coded character data to training Data to improve accuracy.
 
@@ -43,6 +45,8 @@ This project is implemented in Java to create a model that recognizes license pl
 3. Use edge detection to separate each character and digit.
 
 4. Calculate grayscale value of each character and digit in a 1D integer array.
+
+   [226, 240, 65, 29, 124, ...., 0] length: 860
 
 5. Use 1NN method to find the nearest neighbor as the output character or digit.
 
