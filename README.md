@@ -10,6 +10,7 @@ This project uses Java to recognize license plates parallelly.
 
 - Report the performance profile to see how multi threads in this case can help speed up.
 
+## Description
 ### Image Processing Flow Chart
 ![](./Flowchart.png)
 
