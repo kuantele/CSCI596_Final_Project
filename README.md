@@ -42,11 +42,11 @@ This project uses Java to recognize license plates parallelly.
 6. Compare the output and the label into a file.
 
 ### Step 3: Multi threads speed up
-Train the data using multi threads.
+1. Incorporate multi threads method to train our models with data.
 
-Test the whole license plate images simultaneously.
+2. Recognizing great amount of license plate images simultaneously.
 
-Report the performance profile to see how multi threads in this case can help speed up. 
+3. Report the performance profile to see how multi threads in this case can help speed up. 
 
 ## Resources
 
