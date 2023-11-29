@@ -1,10 +1,15 @@
-# USC CSCI 596 Final Project
+# USC CSCI 596 Final Project (Fall 2023)
 
 ## Description
 
 This project uses Java to recognize license plates parallelly. 
 
-The code was based on and derived from Youtube channel: Oggi AI - Java image filter(https://www.youtube.com/playlist?list=PLj8W7XIvO93p1v-f_eSP3yDu4PVK9Pbrt) and GitHib Page: Joe James(https://github.com/joeyajames/Java/tree/master/ALPR and https://github.com/joeyajames/Java/tree/master/Image%20Filters).
+The code was based on and derived from
+1. Youtube channel: Oggi AI - Java image filter
+   - https://www.youtube.com/playlist?list=PLj8W7XIvO93p1v-f_eSP3yDu4PVK9Pbrt
+2. GitHib Page: Joe James
+   - https://github.com/joeyajames/Java/tree/master/ALPR
+   - https://github.com/joeyajames/Java/tree/master/Image%20Filters
 
 ## Contributors
 
@@ -18,6 +23,9 @@ Train the capital English character and digits in Penitentiary Gothic font.
 Give many license plates in California, and use multi threads to recognize them correctly. 
 
 Report the performance profile to see how multi threads in this case can help speed up.
+
+### Image Processing Flow Chart
+![](./Flowchart.png)
 
 ### Step 1: Training Data
 ![](./demo1.png)
