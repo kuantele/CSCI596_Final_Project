@@ -11,7 +11,7 @@ This project is implemented in Java to create a model that recognizes license pl
 - Report the performance profile to identify the bottle neck of the code and evaluate how multi-threads in this case can help us to speed up.
 
 ## Description
-### Image Processing Flow Chart
+### Workflow
 <p align="center">
    <img src="./Flowchart.png">
 </p>
