@@ -14,7 +14,7 @@ This project uses Java to recognize license plates parallelly.
 ![](./Flowchart.png)
 
 ### Step 1: Training Data
-![](./demo1.png)
+![](./demo1.png | width=80% height=80%)
 Prepare 4 images containing A-Z and 0-9 in Penitentiary Gothic font.
 
 Convert them to grayscale and resize them to 20 x 43 pixels.
