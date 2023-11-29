@@ -16,27 +16,30 @@ This project uses Java to recognize license plates parallelly.
 ### Step 1: Training Data
 <img src="./demo1.png" width=80% height=80%>
 
-Prepare 4 images containing A-Z and 0-9 in Penitentiary Gothic font.
+1. Feed our model with 4 images containing A-Z and 0-9 in **Penitentiary Gothic** font.
 
-Convert them to grayscale and resize them to 20 x 43 pixels.
+2. Convert them to grayscale.
+   .
+3. Resize them to 20 x 43 pixels.
 
-Let the character or digit as the key, and 1D integer array to store the grayscale value as a value.
+4. Make the character and digit as the key, and 1D integer array that stores the grayscale pixel value as a value.
 
-Append hard-coded character data to training Data to improve accuracy.
+5. Append hard-coded character data to training Data to improve accuracy.
 
 ### Step 2: Test Data
-![](./demo2.png)
-Load each of the license plat images.
+<img src="./demo2.png" width=80% height=80%>
 
-Crop out top and bottom margins.
+1. Load license plate images to trained model.
 
-Use edge detection to separate each character/ digit.
+2. Crop out top and bottom margins.
 
-Calculate each character/ digit grayscale value in a 1D integer array.
+3. Use edge detection to separate each character and digit.
 
-Use 1NN method to find the nearest neighbor as the output character/ digit.
+4. Calculate grayscale value of each character and digit in a 1D integer array.
 
-Compare the output and the label into a file.
+5. Use 1NN method to find the nearest neighbor as the output character or digit.
+
+6. Compare the output and the label into a file.
 
 ### Step 3: Multi threads speed up
 Train the data using multi threads.
