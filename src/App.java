@@ -85,6 +85,9 @@ public class App {
 				if (inputLine.equals(outputLine)) {
 					correctLines++;
 				}
+				else{
+					System.out.println("Input: " + inputLine + " Output: " + outputLine);
+				}
 			}
 
 			// Close the readers
