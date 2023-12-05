@@ -75,7 +75,9 @@ public class ALPR {
 
 			// identify characters in testData
 			String plateNum = identify(testData);
-			System.out.println(plateNum);
+			//System.out.println(plateNum);
+
+			writeToOutput(plateNum);
 		}
 	}
 
@@ -384,6 +386,38 @@ public class ALPR {
 		//System.out.println(edges);
 
 		return edges; 
+	}
+
+	private void writeToOutput(String result) {
+		String fileName = "output.txt";
+
+		try {
+			// Create File object
+			File file = new File(fileName);
+
+			// If the file doesn't exist, create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+
+			// Create FileWriter with true as the second parameter to enable append mode
+			FileWriter fileWriter = new FileWriter(file, true);
+
+			// Create BufferedWriter for efficient writing
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+			// Append the content to the file
+			bufferedWriter.write(result + "\n");
+
+			// Close the BufferedWriter
+			bufferedWriter.close();
+
+			System.out.println("String appended to " + fileName);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
