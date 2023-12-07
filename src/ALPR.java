@@ -27,7 +27,7 @@ public class ALPR {
 	int[] CHARSIZE = {20, 43};
 	int NUMPIXELS = CHARSIZE[0] * CHARSIZE[1];
 	ArrayList<String> trainLabels = new ArrayList<>(Arrays.asList("A","B","C","D","E","F","G","H","I","J","K","L","M",
-		"N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","B"));
+		"N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","B","0"));
 	ArrayList<Integer[]> trainData = new ArrayList<>(trainLabels.size());
     
     public ALPR(){
