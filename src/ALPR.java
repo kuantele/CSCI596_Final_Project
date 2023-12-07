@@ -30,9 +30,13 @@ public class ALPR {
 		"N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9","B","0"));
 	ArrayList<Integer[]> trainData = new ArrayList<>(trainLabels.size());
     
-    public ALPR(){
+	public ALPR(){
 
-    }
+	}
+
+	public ALPR(File[] files){
+       this.train(files);
+	}
 
 	public void readPlate(File file) {
 		System.out.println("Loading file.");
@@ -401,19 +405,22 @@ public class ALPR {
 				file.createNewFile();
 			}
 
-			// Create FileWriter with true as the second parameter to enable append mode
-			FileWriter fileWriter = new FileWriter(file, true);
+			// Use a synchronized block to ensure thread safety
+			synchronized (this) {
+				// Create FileWriter with true as the second parameter to enable append mode
+				FileWriter fileWriter = new FileWriter(file, true);
 
-			// Create BufferedWriter for efficient writing
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+				// Create BufferedWriter for efficient writing
+				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-			// Append the content to the file
-			bufferedWriter.write(result + "\n");
+				// Append the content to the file
+				bufferedWriter.write(result + "\n");
 
-			// Close the BufferedWriter
-			bufferedWriter.close();
+				// Close the BufferedWriter
+				bufferedWriter.close();
 
-			System.out.println(result + " appended to " + fileName);
+				System.out.println(result + " appended to " + fileName);
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
