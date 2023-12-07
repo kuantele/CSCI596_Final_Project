@@ -17,12 +17,13 @@ public class App {
 		 }
 
 		 ALPR alpr = new ALPR();
-		 File[] files = new File[5];
+		 File[] files = new File[6];
 		 files[0] = new File("Training Data/letters-1 image.png");
 		 files[1] = new File("Training Data/letters-2 image.png");
 		 files[2] = new File("Training Data/letters-3 image.png");
 		 files[3] = new File("Training Data/numbers image.png");
 		 files[4] = new File("Training Data/B.png");
+		 files[5] = new File("Training Data/0.png");
 		 alpr.train(files);
 
 		 testAll(alpr);
