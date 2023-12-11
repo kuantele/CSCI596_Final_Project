@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -99,44 +100,68 @@ public class App {
 	}
 
 	private static void useThread(int howManyThread) throws InterruptedException {
-		//milliseconds
-		double startTime = System.nanoTime() / 10e6;
+		Logger logger = Logger.getLogger("profilingLogger");
+		FileHandler fileHandler = null;
 
-		File file = new File("output.txt");
-		if (file.exists()) {
-			file.delete();
-		}
+		try {
+            fileHandler = new FileHandler("profiling.log", true);
+            fileHandler.setFormatter(new SimpleFormatter() {
+                @Override
+                public String format(LogRecord record) {
+                    return record.getMessage() + "\n";
+                }
+            });
+            logger.addHandler(fileHandler);
+            logger.setLevel(Level.INFO);
 
-		File[] files = new File[6];
-		files[0] = new File("Training Data/letters-1 image.png");
-		files[1] = new File("Training Data/letters-2 image.png");
-		files[2] = new File("Training Data/letters-3 image.png");
-		files[3] = new File("Training Data/numbers image.png");
-		files[4] = new File("Training Data/B.png");
-		files[5] = new File("Training Data/0.png");
+			//milliseconds
+			double startTime = System.nanoTime() / 10e6;
 
-		int groupSize = 30 / howManyThread;
+			File file = new File("output.txt");
+			if (file.exists()) {
+				file.delete();
+			}
 
-		Thread[] threads = new Thread[howManyThread];
+			File[] files = new File[6];
+			files[0] = new File("Training Data/letters-1 image.png");
+			files[1] = new File("Training Data/letters-2 image.png");
+			files[2] = new File("Training Data/letters-3 image.png");
+			files[3] = new File("Training Data/numbers image.png");
+			files[4] = new File("Training Data/B.png");
+			files[5] = new File("Training Data/0.png");
 
-		for(int i = 0; i < howManyThread; i++){
-			int from = i * groupSize + 1;
-			int to = from + groupSize - 1;
-			threads[i] = new Thread(new Worker(new ALPR(files), from, to));
-			threads[i].start();
-		}
+			int groupSize = 30 / howManyThread;
 
-		for(int i = 0; i < howManyThread; i++){
-			threads[i].join();
-		}
+			Thread[] threads = new Thread[howManyThread];
 
-		showResult();
-		//milliseconds
-		double endTime = System.nanoTime() / 10e6;
-		double timeUsed = endTime - startTime;
-		System.out.print("Use ");
-		System.out.print(timeUsed);
-		System.out.println(" ms");
+			for(int i = 0; i < howManyThread; i++){
+				int from = i * groupSize + 1;
+				int to = from + groupSize - 1;
+				threads[i] = new Thread(new Worker(new ALPR(files), from, to));
+				threads[i].start();
+			}
+
+			for(int i = 0; i < howManyThread; i++){
+				threads[i].join();
+			}
+
+			showResult();
+			//milliseconds
+			double endTime = System.nanoTime() / 10e6;
+			double timeUsed = endTime - startTime;
+			System.out.print("Use ");
+			System.out.print(timeUsed);
+			System.out.println(" ms");
+
+            logger.log(Level.INFO, howManyThread + "," + timeUsed);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fileHandler != null) {
+                fileHandler.close();
+            }
+        }
 	}
 
 }
