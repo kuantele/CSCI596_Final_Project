@@ -11,13 +11,13 @@ public class App {
         //ImageFilter imgFilter = new ImageFilter("photo.png");
         //imgFilter.readImage();
 		 useThread(1);
-		 useThread(2);
-		 useThread(3);
-		 useThread(5);
-		 useThread(6);
-		 useThread(10);
-		 useThread(15);
-		 useThread(30);
+		 //useThread(2);
+		 //useThread(3);
+		 //useThread(5);
+		 //useThread(6);
+		 //useThread(10);
+		 //useThread(15);
+		 //useThread(30);
     }
 
 	 private static void testAll(ALPR alpr){
