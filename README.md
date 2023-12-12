@@ -102,11 +102,11 @@ One key observation from the above graph is that there is a significant improvem
 
 Flame graph using 2 threads:
 
-<img src="images/2threads.png" width=50% height=50%>
+<img src="images/2threads.png" width=80% height=80%>
 
 Flame graph using 30 threads:
 
-<img src="images/30threads.png" width=50% height=50%>
+<img src="images/30threads.png" width=80% height=80%>
 
 Comparing the above two graphs, we can see that using 30 threads will create a huge amount of overhead in ALPR.triain(), the model training process. Hence, we tried the following idea and it turned out to be the best result we can get.
 
