@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.util.List;
 import java.util.stream.*;
 import java.lang.Math;
+import java.util.logging.*;
 
 public class ALPR2 {
     // Penitentiary Gothic font, 20x43 pix = 860 pixels
@@ -39,6 +40,63 @@ public class ALPR2 {
     }
 
     private static void useThread(int howManyThread) throws InterruptedException {
+        Logger logger = Logger.getLogger("profilingLogger");
+        FileHandler fileHandler = null;
+
+        try{
+            fileHandler = new FileHandler("profiling-new.log", true);
+            fileHandler.setFormatter(new SimpleFormatter() {
+                @Override
+                public String format(LogRecord record) {
+                    return record.getMessage() + "\n";
+                }
+            });
+            logger.addHandler(fileHandler);
+            logger.setLevel(Level.INFO);
+
+            //milliseconds
+            double startTime = System.nanoTime() / 10e6;
+
+            File file = new File("output.txt");
+            if (file.exists()) {
+                file.delete();
+            }
+
+            int groupSize = 30 / howManyThread;
+
+            Thread[] threads = new Thread[howManyThread];
+
+            for(int i = 0; i < howManyThread; i++){
+                int from = i * groupSize + 1;
+                int to = from + groupSize - 1;
+                threads[i] = new Thread(new Worker2(new ALPR2(), from, to));
+                threads[i].start();
+            }
+
+            for(int i = 0; i < howManyThread; i++){
+                threads[i].join();
+            }
+
+            showResult();
+            //milliseconds
+            double endTime = System.nanoTime() / 10e6;
+            double timeUsed = endTime - startTime;
+            System.out.print("For using ");
+            System.out.print(howManyThread);
+            System.out.print(" threads takes ");
+            System.out.print(timeUsed);
+            System.out.println(" ms");
+
+            logger.log(Level.INFO, howManyThread + "," + timeUsed);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fileHandler != null) {
+                fileHandler.close();
+            }
+        }
+
         //milliseconds
         double startTime = System.nanoTime() / 10e6;
 

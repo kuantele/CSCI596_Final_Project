@@ -12,13 +12,13 @@ public class App {
         //ImageFilter imgFilter = new ImageFilter("photo.png");
         //imgFilter.readImage();
 		 useThread(1);
-		 //useThread(2);
-		 //useThread(3);
-		 //useThread(5);
-		 //useThread(6);
-		 //useThread(10);
-		 //useThread(15);
-		 //useThread(30);
+		 useThread(2);
+		 useThread(3);
+		 useThread(5);
+		 useThread(6);
+		 useThread(10);
+		 useThread(15);
+		 useThread(30);
     }
 
 	 private static void testAll(ALPR alpr){
@@ -104,7 +104,7 @@ public class App {
 		FileHandler fileHandler = null;
 
 		try {
-            fileHandler = new FileHandler("profiling.log", true);
+            fileHandler = new FileHandler("profiling-old.log", true);
             fileHandler.setFormatter(new SimpleFormatter() {
                 @Override
                 public String format(LogRecord record) {
