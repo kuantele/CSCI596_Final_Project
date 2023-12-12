@@ -3,7 +3,7 @@
 
 # Log files
 *.log
-.txt
+*.txt
 
 # Package Files #
 *.jar
