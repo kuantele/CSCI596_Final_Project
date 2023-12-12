@@ -59,6 +59,17 @@ This project is implemented in Java to create a model that recognizes license pl
 
 3. Report the performance profile to identify the bottle neck of the code and evaluate how multi-threads in this case can help us to speed up.
 
+## How to use
+1. Clone this repository
+
+```bash
+git clone https://github.com/kuantele/CSCI596_Final_Project
+```
+
+2. Single-Threaded Training, Single-Threaded Recognition: run the main function of App.java(just run useThread(1))
+3. Multi-Threaded Training, Multi-Threaded Recognition: run the main function of App.java
+4. Single-Threaded Training, Multi-Threaded Recognition: run the main function of ALPR2.java
+
 ## Implementation
 
 ### Environment
@@ -111,6 +122,7 @@ Flame graph using 30 threads:
 Comparing the above two graphs, we can see that using 30 threads will create a huge amount of overhead in ALPR.triain(), the model training process. Hence, we tried the following idea and it turned out to be the best result we can get.
 
 ### Single-Threaded Training, Multi-Threaded Recognition (ALPR2.java)
+We found utilizing multiple threads for training the same font iteratively proved to be redundant and time-intensive.
 Finally, we decided to use one single thread to train the model to reduce the overhead while still using multi-threads to recognize the plates. The result is as follows:
 
 | # of threads | Time(ms)           |
@@ -126,6 +138,8 @@ Finally, we decided to use one single thread to train the model to reduce the ov
 
 
 <img src="images/graph3.png" width=80% height=80%>
+
+The outcome indicates that the optimal approach for recognizing 30 license plates involves the utilization of 5-6 threads.
 
 ## Reference
 
