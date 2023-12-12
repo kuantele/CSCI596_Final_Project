@@ -82,7 +82,7 @@ Using the sample code from [2], we used single thread to train and recognize the
 | 10      |50.26253329962492|
 | Average |48.06757707|
 
-### Multi-Threaded Training, Multi-Threaded Recognition
+### Multi-Threaded Training, Multi-Threaded Recognition (ALPR.java)
 With a brief understanding of how the single-threaded program works, we then started to parallelize the program using multi-threading and tried to find the best performance, and we got the following results:
 
 | # of threads | Time(ms)           |
@@ -110,6 +110,22 @@ Flame graph using 30 threads:
 
 Comparing the above two graphs, we can see that using 30 threads will create a huge amount of overhead in ALPR.triain(), the model training process. Hence, we tried the following idea and it turned out to be the best result we can get.
 
+### Single-Threaded Training, Multi-Threaded Recognition (ALPR2.java)
+Finally, we decided to use one single thread to train the model to reduce the overhead while still using multi-threads to recognize the plates. The result is as follows:
+
+| # of threads | Time(ms)           |
+|-------------|--------------------|
+| 1	          | 27.904991699382663 |
+| 2	          |12.330941600725055|
+| 3	          |8.415737500414252|
+| 5	          |5.632704200223088|
+| 6	          |5.021720798686147|
+| 10	         |4.205070799216628|
+| 15	         |5.060437500476837|
+| 30	         |4.273858400061727|
+
+
+<img src="images/graph3.png" width=80% height=80%>
 
 ## Reference
 
