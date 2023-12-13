@@ -70,7 +70,7 @@ git clone https://github.com/kuantele/CSCI596_Final_Project
 3. Multi-Threaded Training, Multi-Threaded Recognition: run the main function of App.java
 4. Single-Threaded Training, Multi-Threaded Recognition: run the main function of ALPR2.java
 
-## Implementation
+## Result
 
 ### Environment
 - Operating System: MacOS Sonoma 14.2
